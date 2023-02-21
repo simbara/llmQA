@@ -1,5 +1,4 @@
 import streamlit as st
-import openai
 from streamlit.components.v1 import html
 
 st.set_page_config(page_title="Movement Screens & Baseball")
@@ -21,7 +20,11 @@ with st.sidebar:
     st.markdown(html_temp.format("rgba(55, 53, 47, 0.16)"),unsafe_allow_html=True)
     st.markdown("""
     # How does it work
-    Try asking a question related to the papers found here: [Google Drive](https://drive.google.com/drive/folders/1rbpPzWBIl7LLsWSh5hcJcLpMgQl4oCTd?usp=share_link)
+    Try asking a question related to the papers found here: [Google Drive](https://drive.google.com/drive/folders/1rbpPzWBIl7LLsWSh5hcJcLpMgQl4oCTd?usp=share_link)      \n
+    For example:  \n 
+    - What activities improve SFMA scores?  \n 
+    - How long does it take to improve these scores?  \n 
+    - Are preseason FMS scores related to overuse severity scores?
     """)
     st.markdown(html_temp.format("rgba(55, 53, 47, 0.16)"),unsafe_allow_html=True)
     st.markdown("""
@@ -35,14 +38,12 @@ input_text = None
 if 'output' not in st.session_state:
     st.session_state['output'] = 0
 
-if st.session_state['output'] <=2:
-    st.markdown("""
-    # Movement Screens & Baseball
-    """)
-    input_text = st.text_input("Ask your question", disabled=False, placeholder="are preseason FMS scores related to overuse severity scores?")
-    st.session_state['output'] = st.session_state['output'] + 1
-else:
-    st.info("Thank you! Refresh for more Q&A")
+# if st.session_state['output']:
+st.markdown("""
+# Movement Screens & Baseball
+""")
+input_text = st.text_input("Ask your question", disabled=False, placeholder="Are preseason FMS scores related to overuse severity scores?")
+st.session_state['output'] = st.session_state['output'] + 1
 
 
 hide="""
